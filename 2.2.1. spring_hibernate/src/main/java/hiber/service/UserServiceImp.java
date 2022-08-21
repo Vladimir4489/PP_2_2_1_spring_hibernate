@@ -12,10 +12,12 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImp implements UserService, CarService {
 
    @Autowired
    private UserDao userDao;
+
+   private CarServiceImp carServiceImp;
 
    @Transactional
    @Override
@@ -26,7 +28,7 @@ public class UserServiceImp implements UserService {
    @Transactional
    @Override
    public void add(Car car) {
-      userDao.add(car);
+      carServiceImp.add(car);
    }
 
    @Transactional(readOnly = true)
